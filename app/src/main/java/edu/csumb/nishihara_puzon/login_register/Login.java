@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import net.naturesnap.apiclient.Interfaces;
 
 
 public class Login extends Activity implements View.OnClickListener {
@@ -57,6 +57,7 @@ public class Login extends Activity implements View.OnClickListener {
 
     private void authenticate(User user) {
         ServerRequests serverRequest = new ServerRequests(this);
+        Interface.request();
         serverRequest.fetchUserDataAsyncTask(user, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
