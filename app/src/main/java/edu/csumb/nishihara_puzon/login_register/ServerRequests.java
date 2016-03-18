@@ -68,7 +68,7 @@ public class ServerRequests {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
             dataToSend.add(new BasicNameValuePair("name", user.name));
             dataToSend.add(new BasicNameValuePair("lastname", user.lastname));
-            dataToSend.add(new BasicNameValuePair("email", user.email))
+            dataToSend.add(new BasicNameValuePair("email", user.email));
             dataToSend.add(new BasicNameValuePair("username", user.username));
             dataToSend.add(new BasicNameValuePair("password", user.password));
 
