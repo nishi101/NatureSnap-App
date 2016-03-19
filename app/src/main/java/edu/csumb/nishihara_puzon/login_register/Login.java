@@ -57,9 +57,9 @@ public class Login extends Activity implements View.OnClickListener {
     private void authenticate(User user) {
         String loginResponse = Interface.apiRequest(new net.naturesnap.apiclient.http.requests.Login(), new String[]{user.username, user.password});
         if(loginResponse.equals("error")){
-            //not logged in
+            showErrorMessage();
         }else if(loginResponse.equals("success")){
-            //logged in
+            logUserIn(user);
         }
     }
 

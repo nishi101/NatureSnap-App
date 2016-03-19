@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import net.naturesnap.apiclient.Interface;
+
 public class Register extends Activity implements View.OnClickListener {
 
     Button bRegister;
@@ -46,14 +48,15 @@ public class Register extends Activity implements View.OnClickListener {
     }
 
     private void registerUser(User user) {
-        ServerRequests serverRequest = new ServerRequests(this);
-        serverRequest.storeUserDataInBackground(user, new GetUserCallback() {
-            @Override
-            public void done(User returnedUser) {
-                Intent loginIntent = new Intent(Register.this, Login.class);
-                startActivity(loginIntent);
-            }
-        });
+        String registerResponse = Interface.apiRequest(new net.naturesnap.apiclient.http.requests.Register(), new String[]{user.name, user.lastname, user.email, user.username, user.password});
+        if (registerResponse.equals("success")) {
+            Intent loginIntent = new Intent(Register.this, Login.class);
+            startActivity(loginIntent);
+        } else if (registerResponse.equals("exists")) {
+
+        } else if (registerResponse.equals("invalid")) {
+
+        }
     }
 
 }
