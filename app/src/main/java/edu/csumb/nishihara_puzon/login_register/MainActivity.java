@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -13,6 +14,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     EditText etName, etLastName, etEmail, etUsername;
 
     UserLocalStore userLocalStore;
+
+    private static final int SELECTED_PICTURE=1;
+    ImageView iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,4 +69,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
         etName.setText(user.name);
         //etAge.setText(user.age + "");
     }
+
 }

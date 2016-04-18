@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import net.naturesnap.apiclient.Interface;
 
+import net.naturesnap.apiclient.http.enums.Format;
+import net.naturesnap.apiclient.http.enums.Type;
+import net.naturesnap.apiclient.http.results.Code;
+
 
 public class Login extends Activity implements View.OnClickListener {
 
@@ -19,6 +23,14 @@ public class Login extends Activity implements View.OnClickListener {
     EditText etUsername, etPassword;
 
     UserLocalStore userLocalStore;
+
+    public Login() {
+        this.setEndpoint("login.php");
+        this.setFormat(Format.CODE);
+        this.setParams("username", "password");
+        this.setType(Type.POST);
+        this.setResult(Code.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
+import net.naturesnap.apiclient.Interface;
+
+
 /**
  * Created by Nick on 4/13/16.
  */
-public class Upload extends Activity implements View.OnClickListener {
 
-}

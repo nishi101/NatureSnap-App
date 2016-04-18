@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">Login_Register</string>
+    <string name="app_name">NatureSnap</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_upload">Upload</string>
 </resources>

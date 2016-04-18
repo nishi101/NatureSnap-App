@@ -24,6 +24,10 @@
             android:name=".Register"
             android:label="Sign Up" >
         </activity>
+        <activity
+            android:name=".Upload"
+            android:label="Upload" >
+        </activity>
     </application>
 
 </manifest>
