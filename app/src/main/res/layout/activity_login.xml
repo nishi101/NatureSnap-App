@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:layout_width="match_parent"
-    android:background="@drawable/login">
+    android:background="@drawable/NatureSnap_Login">
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Username:"
         android:textStyle="bold"
         android:textSize="25dp"
-        android:textColor="#FFFCCF"
+        android:textColor="#CDC9C9"
         android:layout_height="wrap_content"/>
 
     <EditText
@@ -19,14 +19,14 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#CDC9C9"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Password:"
         android:textStyle="bold"
         android:textSize="25dp"
-        android:textColor="#FFFCCF"
+        android:textColor="#CDC9C9"
         android:layout_height="wrap_content" />
 
     <EditText
@@ -35,7 +35,7 @@
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#CDC9C9"/>
 
     <Button
         android:id="@+id/bLogin"
@@ -47,14 +47,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:text="User: jane"
-        android:textColor="#FFFCCF"
+        android:textColor="#CDC9C9"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
         android:text="User: doe"
-        android:textColor="#FFFCCF"
+        android:textColor="#CDC9C9"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click Here to Register"
-        android:textColor="#FFFCCF"
+        android:textColor="#CDC9C9"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal" />
 
