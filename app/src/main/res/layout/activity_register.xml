@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:layout_width="match_parent"
-    android:background="@drawable/nature">
+    android:background="@drawable/register_background"
+    android:gravity="center"
+    android:includeFontPadding="false">
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Name:"
-        android:textColor="#FFFCCF"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_height="wrap_content" />
 
@@ -18,12 +20,12 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Last Name:"
-        android:textColor="#FFFCCF"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_height="wrap_content" />
 
@@ -32,12 +34,12 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Email:"
-        android:textColor="#FFFCCF"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_height="wrap_content" />
 
@@ -46,12 +48,12 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Username:"
-        android:textColor="#FFFCCF"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_height="wrap_content" />
 
@@ -60,12 +62,12 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Password:"
-        android:textColor="#FFFCCF"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_height="wrap_content" />
 
@@ -75,13 +77,14 @@
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
         android:layout_height="wrap_content"
-        android:textColor="#FFFCCF"/>
+        android:textColor="#000"/>
 
     <Button
         android:id="@+id/bRegister"
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
+        android:text=""
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/register_button"/>
 
 </LinearLayout>

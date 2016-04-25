@@ -24,13 +24,13 @@ public class Login extends Activity implements View.OnClickListener {
 
     UserLocalStore userLocalStore;
 
-    public Login() {
-        this.setEndpoint("login.php");
-        this.setFormat(Format.CODE);
-        this.setParams("username", "password");
-        this.setType(Type.POST);
-        this.setResult(Code.class);
-    }
+//    public Login() {
+//        this.setEndpoint("login.php");
+//        this.setFormat(Format.CODE);
+//        this.setParams("username", "password");
+//        this.setType(Type.POST);
+//        this.setResult(Code.class);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
