@@ -1,4 +1,4 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -15,65 +15,147 @@
         android:textColor="#000000"
         android:id="@+id/textView"
         android:layout_row="3"
-        android:layout_column="2" />
+        android:layout_column="2"
+        android:layout_marginTop="131dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/bLogout"
+        android:background="@drawable/logout_button"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_row="25"
+        android:layout_column="21"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/editText2" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Jane Doe"
-        android:ems="10"
         android:id="@+id/editText"
-        android:layout_row="3"
-        android:layout_column="3"
-        android:background="@android:color/transparent"/>
+        android:text="Name of author"
+        android:textColor="#000000"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_row="5"
-        android:layout_column="3" />
+        android:layout_width="190dp"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/editText"
+        android:longClickable="false"
+        android:background="@drawable/default_placeholder" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
-        android:layout_row="13"
-        android:layout_column="3"
-        android:text="Uploads" />
+        android:text="Views:"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:id="@+id/textView2"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
-        android:layout_row="20"
-        android:layout_column="3"
-        android:text="Views" />
+        android:text="Number of Views"
+        android:textColor="#000000"
+        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
 
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_alignParentBottom="true"
-        android:layout_row="22"
-        android:layout_column="0" />
+        android:text="Uploads:"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:id="@+id/textView3"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentStart="true" />
 
-    <Gallery
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gallery"
-        android:layout_row="23"
-        android:layout_column="3"
-        android:background="@android:color/black"/>
+        android:id="@+id/editText3"
+        android:text="Number of Uploads"
+        android:textColor="#000000"
+        android:layout_below="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2"
+        android:layout_toEndOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/bLogout"
-        android:text="Logout"
-        android:layout_width="111dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:id="@+id/button"
+        android:background="@drawable/stories_button"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_row="25"
-        android:layout_column="21" />
+        android:layout_column="21"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-</GridLayout>
+    <Button
+        android:id="@+id/button2"
+        android:background="@drawable/camera_button"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_row="25"
+        android:layout_column="21"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editText3"
+        android:layout_above="@+id/bLogout"
+        android:layout_alignEnd="@+id/bLogout"
+        android:weightSum="1"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/image_placeholder" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/image_placeholder" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/imageView4"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/image_placeholder" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_above="@+id/editText"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_toEndOf="@+id/imageView"
+        android:text="Put a PIE chart here" />
+
+
+</RelativeLayout>
