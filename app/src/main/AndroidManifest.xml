@@ -28,6 +28,14 @@
             android:name=".description"
             android:label="@string/title_activity_description" >
         </activity>
+        <activity
+            android:name=".story"
+            android:label="@string/title_activity_story" >
+        </activity>
+        <activity
+            android:name=".Upload"
+            android:label="@string/title_activity_upload" >
+        </activity>
     </application>
 
 </manifest>
