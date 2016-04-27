@@ -8,6 +8,4 @@ import android.content.SharedPreferences;
  */
 public class UserLocalStore {
 
-    public static User user = null;
-
 }

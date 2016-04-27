@@ -1,9 +1,11 @@
 package edu.csumb.nishihara_puzon.login_register;
 
+import java.io.Serializable;
+
 /**
  * Created by Nick on 3/13/16.
  */
-public class User {
+public class User implements Serializable {
 
     String id, name, lastname, email, username, password;
 

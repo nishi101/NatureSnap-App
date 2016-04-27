@@ -1,8 +1,12 @@
 package edu.csumb.nishihara_puzon.login_register;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.view.View;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -17,12 +21,20 @@ import net.naturesnap.apiclient.http.enums.Type;
 import net.naturesnap.apiclient.http.results.Code;
 import net.naturesnap.apiclient.http.results.UserResponse;
 
+import org.apache.commons.io.IOUtils;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 
 public class Login extends Activity implements View.OnClickListener {
-
-    Button bLogin;
-    TextView registerLink;
-    EditText etUsername, etPassword;
+    public Button bLogin;
+    public TextView registerLink;
+    public EditText etUsername, etPassword;
 
 //    public Login() {
 //        this.setEndpoint("login.php");
@@ -35,8 +47,9 @@ public class Login extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (UserLocalStore.user != null) {
-            logUserIn(UserLocalStore.user);
+        File userd = new File(getFilesDir(), "user.dat");
+        if (userd.exists()) {
+            logUserIn();
             return;
         }
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -60,9 +73,7 @@ public class Login extends Activity implements View.OnClickListener {
             case R.id.bLogin:
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-
                 User user = new User(username, password);
-
                 authenticate(user);
                 break;
             case R.id.tvRegisterLink:
@@ -78,7 +89,19 @@ public class Login extends Activity implements View.OnClickListener {
             showErrorMessage();
         } else if (loginResponse.getSuccess()) {
             user.id = loginResponse.getUser_id();
-            logUserIn(user);
+            try {
+                File file = new File(getFilesDir(), "user.dat");
+                if (!file.exists())
+                    if (!file.createNewFile())
+                        throw new IOException("Unable to create file");
+
+                FileOutputStream fos = new FileOutputStream(file);
+                ObjectOutputStream obj = new ObjectOutputStream(fos);
+                obj.writeObject(user);
+            } catch (Exception c) {
+                c.printStackTrace();
+            }
+            logUserIn();
         }
     }
 
@@ -89,8 +112,7 @@ public class Login extends Activity implements View.OnClickListener {
         dialogBuilder.show();
     }
 
-    private void logUserIn(User returnedUser) {
-        UserLocalStore.user = returnedUser;
+    private void logUserIn() {
         startActivity(new Intent(this, MainActivity.class));
     }
 }
