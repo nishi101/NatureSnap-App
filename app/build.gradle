@@ -1,12 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
+    dexOptions {
+        preDexLibraries = false
+    }
+    project.tasks.withType(com.android.build.gradle.tasks.Dex) {
+        additionalParameters = ['--core-library']
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/ASL2.0'
+    }
+    lintOptions {
+        abortOnError false
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "edu.csumb.nishihara_puzon.login_register"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -21,6 +35,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'net.naturesnap.api:NatureSnapAPI:1.0'
-    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile('net.naturesnap.api:NatureSnapAPI:1.2.1') {
+        exclude group: 'org.json', module: 'json'
+    }
 }

@@ -8,4 +8,5 @@
     <string name="title_activity_upload">Upload</string>
     <string name="title_activity_description">description</string>
     <string name="title_activity_story">story</string>
+    <string name="title_activity_image_capture">ImageCapture</string>
 </resources>

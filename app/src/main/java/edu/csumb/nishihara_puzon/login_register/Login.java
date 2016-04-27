@@ -2,6 +2,7 @@ package edu.csumb.nishihara_puzon.login_register;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import net.naturesnap.apiclient.Interface;
 import net.naturesnap.apiclient.http.enums.Format;
 import net.naturesnap.apiclient.http.enums.Type;
 import net.naturesnap.apiclient.http.results.Code;
+import net.naturesnap.apiclient.http.results.UserResponse;
 
 
 public class Login extends Activity implements View.OnClickListener {
@@ -21,8 +23,6 @@ public class Login extends Activity implements View.OnClickListener {
     Button bLogin;
     TextView registerLink;
     EditText etUsername, etPassword;
-
-    UserLocalStore userLocalStore;
 
 //    public Login() {
 //        this.setEndpoint("login.php");
@@ -35,6 +35,13 @@ public class Login extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (UserLocalStore.user != null) {
+            logUserIn(UserLocalStore.user);
+            return;
+        }
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         setContentView(R.layout.activity_login);
 
         bLogin = (Button) findViewById(R.id.bLogin);
@@ -45,7 +52,6 @@ public class Login extends Activity implements View.OnClickListener {
         bLogin.setOnClickListener(this);
         registerLink.setOnClickListener(this);
 
-        userLocalStore = new UserLocalStore(this);
     }
 
     @Override
@@ -67,10 +73,11 @@ public class Login extends Activity implements View.OnClickListener {
     }
 
     private void authenticate(User user) {
-        String loginResponse = Interface.apiRequest(new net.naturesnap.apiclient.http.requests.Login(), new String[]{user.username, user.password});
-        if(loginResponse.equals("error")){
+        UserResponse loginResponse = (UserResponse) Interface.request(new net.naturesnap.apiclient.http.requests.Login(), new String[]{user.username, user.password});
+        if (!loginResponse.getSuccess()) {
             showErrorMessage();
-        }else if(loginResponse.equals("success")){
+        } else if (loginResponse.getSuccess()) {
+            user.id = loginResponse.getUser_id();
             logUserIn(user);
         }
     }
@@ -83,8 +90,7 @@ public class Login extends Activity implements View.OnClickListener {
     }
 
     private void logUserIn(User returnedUser) {
-        userLocalStore.storeUserData(returnedUser);
-        userLocalStore.setUserLoggedIn(true);
+        UserLocalStore.user = returnedUser;
         startActivity(new Intent(this, MainActivity.class));
     }
 }

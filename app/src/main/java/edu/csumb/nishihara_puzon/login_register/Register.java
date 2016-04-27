@@ -41,7 +41,7 @@ public class Register extends Activity implements View.OnClickListener {
                 String password = etPassword.getText().toString();
                 //int age = Integer.parseInt(etAge.getText().toString());
 
-                User user = new User(name, lastname, email, username, password);
+                User user = new User("", name, lastname, email, username, password);
                 registerUser(user);
                 break;
         }

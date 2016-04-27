@@ -84,11 +84,25 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
+      <excludeFolder url="file://$MODULE_DIR$/build/test-results" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="slf4j-api-1.7.14" level="project" />
-    <orderEntry type="library" exported="" name="NatureSnapAPI-1.0" level="project" />
+    <orderEntry type="library" exported="" name="jackson-core-2.7.1" level="project" />
+    <orderEntry type="library" exported="" name="jackson-xml-databind-0.6.2" level="project" />
+    <orderEntry type="library" exported="" name="jackson-module-json-org-0.9.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-io-2.5" level="project" />
+    <orderEntry type="library" exported="" name="jackson-databind-2.7.1-1" level="project" />
+    <orderEntry type="library" exported="" name="NatureSnapAPI-1.2.1" level="project" />
+    <orderEntry type="library" exported="" name="stax-api-1.0-2" level="project" />
+    <orderEntry type="library" exported="" name="stax2-api-3.1.0" level="project" />
+    <orderEntry type="library" exported="" name="jackson-core-asl-1.9.2" level="project" />
+    <orderEntry type="library" exported="" name="junit-4.8.2" level="project" />
+    <orderEntry type="library" exported="" name="jackson-mapper-asl-1.9.2" level="project" />
+    <orderEntry type="library" exported="" name="jackson-annotations-2.7.0" level="project" />
+    <orderEntry type="library" exported="" name="httpclient-4.4.1.1" level="project" />
+    <orderEntry type="library" exported="" name="jackson-xc-1.9.2" level="project" />
   </component>
 </module>

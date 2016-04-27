@@ -5,9 +5,9 @@ package edu.csumb.nishihara_puzon.login_register;
  */
 public class User {
 
-    String name, lastname, email, username, password;
+    String id, name, lastname, email, username, password;
 
-    public User(String name, String lastname, String email, String username, String password) {
+    public User(String id, String name, String lastname, String email, String username, String password) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
@@ -16,6 +16,6 @@ public class User {
     }
 
     public User(String username, String password) {
-        this("", "", "", username, password);
+        this("", "", "", "", username, password);
     }
 }
