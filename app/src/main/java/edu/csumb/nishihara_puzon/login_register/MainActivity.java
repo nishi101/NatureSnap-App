@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
                 Log.d("NatureSnap", "failed to create directory");
-                return null;
+                //return null;
             }
         }
         // Create a media file name
