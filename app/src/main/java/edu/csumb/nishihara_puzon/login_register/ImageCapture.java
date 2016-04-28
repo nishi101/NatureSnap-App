@@ -54,7 +54,6 @@ public class ImageCapture extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_capture);
 
-
     }
 
     @Override

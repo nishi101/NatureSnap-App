@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import net.naturesnap.apiclient.Interface;
 
@@ -54,9 +55,9 @@ public class Register extends Activity implements View.OnClickListener {
             Intent loginIntent = new Intent(Register.this, Login.class);
             startActivity(loginIntent);
         } else if (registerResponse.equals("exists")) {
-
+            Toast.makeText(this, "Account with that name exists!", Toast.LENGTH_LONG).show();
         } else if (registerResponse.equals("invalid")) {
-
+            Toast.makeText(this, "Invalid form entries.", Toast.LENGTH_LONG).show();
         }
     }
 

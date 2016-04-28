@@ -1,8 +1,10 @@
 package edu.csumb.nishihara_puzon.login_register;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -24,15 +26,18 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.security.Permission;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     public static User user = null;
-    public static String savedImage;
     private Uri fileUri;
+    public static Uri bullshit;
     public static final int MEDIA_TYPE_IMAGE = 1;
 
     /**
@@ -56,8 +61,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return mediaFile;
     }
 
-    Button bLogout, bCamera;
-    TextView username, views, uploads;
+    public Button bLogout, bCamera;
+    public TextView username, views, uploads;
 
 
     private static final int SELECTED_PICTURE=1;
@@ -132,12 +137,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void loadCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         Uri f = Uri.fromFile(getOutputMediaFileUri());
-        savedImage = f.toString(); // create a file to save the image
-        if (savedImage == null) {
-            Log.d("image", "WHAT THE FUCK");
+        try {
+            File file = new File(getFilesDir(), "imagePath.dat");
+            if (file.exists())
+                file.delete();
+            if (!file.createNewFile())
+                    throw new IOException("Unable to create file");
+            ObjectOutputStream obj = new ObjectOutputStream( new FileOutputStream(file) );
+            obj.writeObject(f);
+            bullshit = f;
+        }catch(Exception e){
+            e.printStackTrace();
         }
         intent.putExtra(MediaStore.EXTRA_OUTPUT, f); // set the image file name
-        // start the image capture Intent
+        //Save image path temporarily for derps sake
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
 
@@ -146,11 +159,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // Image captured and saved to fileUri specified in the Intent
-                String imageUri = MainActivity.savedImage;
-                if (imageUri == null) {
-                    Toast.makeText(this, "Image saved to:\n" + imageUri, Toast.LENGTH_LONG).show();
+                Uri imageUri = null;
+                try {
+                    File file = new File(getFilesDir(), "imagePath.dat");
+                    ObjectInputStream obj_in = new ObjectInputStream(new FileInputStream(file));
+                    imageUri = (Uri) obj_in.readObject();
+                    file.delete();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                if (bullshit != null) {
+                    Toast.makeText(this, "Image saved to:\n" + bullshit, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(this, Upload.class);
-                    intent.putExtra("file", imageUri);
+                    intent.putExtra("file", bullshit.toString());
                     startActivity(intent);
                 } else {
                     Toast.makeText(this, "Image Capture Failed", Toast.LENGTH_LONG).show();
@@ -158,12 +179,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     startActivity(intent);
                 }
             } else if (resultCode == RESULT_CANCELED) {
-                savedImage = null;
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(this, "Image Capture Failed", Toast.LENGTH_LONG).show();
-                savedImage = null;
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
